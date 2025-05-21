@@ -1,0 +1,413 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        Mintesnot yesmashwa Twitter Profile
+    </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .user-detail {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+
+
+
+            /* Left section */
+            .left-section {
+                flex: 1;
+                max-width: 768px;
+            }
+
+            /* Header */
+            .profile-header.profile-header {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                border-bottom: 1px solid #374151;
+                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .profile-header.profile-header button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.25rem;
+                cursor: pointer;
+            }
+
+            .profile-header.profile-header h1 {
+                font-weight: 600;
+                font-size: 1.125rem;
+                line-height: 1.25rem;
+                margin: 0;
+            }
+
+            .profile-header.profile-header p {
+                font-size: 0.75rem;
+                line-height: 1rem;
+                color: #9ca3af;
+                margin: 0;
+            }
+
+            /* Banner */
+            .banner-container {
+                position: relative;
+                border-top-left-radius: 0.75rem;
+                border-top-right-radius: 0.75rem;
+                overflow: hidden;
+                margin-bottom: 4rem;
+            }
+
+            .banner-container img.banner {
+                width: 100%;
+                height: 12rem;
+                object-fit: cover;
+                display: block;
+            }
+
+            .profile-pic-wrapper {
+                position: absolute;
+                bottom: -4rem;
+                left: 1.5rem;
+                width: 8rem;
+                height: 8rem;
+                border-radius: 9999px;
+                border: 4px solid black;
+                overflow: hidden;
+                background-color: #d1d5db;
+            }
+
+            .profile-pic-wrapper img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Profile info and edit button */
+            .profile-info-edit {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 1.5rem;
+                padding-top: 1rem;
+            }
+
+            .profile-info {
+                max-width: 600px;
+            }
+
+            .profile-info h2 {
+                font-weight: 700;
+                font-size: 1.25rem;
+                line-height: 1.5rem;
+                margin: 0 0 0.125rem 0;
+            }
+
+            .profile-info h2 .extra-bold {
+                font-weight: 800;
+            }
+
+            .profile-info p.handle {
+                color: #6b7280;
+                font-size: 0.875rem;
+                margin: 0 0 0.75rem 0;
+            }
+
+            .profile-info p.description {
+                color: #d1d5db;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                max-width: 600px;
+                margin: 0 0 0.75rem 0;
+            }
+
+            .profile-info .details {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                font-size: 0.75rem;
+                color: #6b7280;
+                margin-bottom: 0.75rem;
+                max-width: 600px;
+            }
+
+            .profile-info .details div {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+            .profile-info .details i {
+                font-size: 0.75rem;
+            }
+
+            .profile-info .details a {
+                color: #2563eb;
+                max-width: 160px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: block;
+            }
+
+            .profile-info p.joined {
+                color: #6b7280;
+                font-size: 0.75rem;
+                margin: 0 0 1rem 0;
+            }
+
+            .profile-info .followers {
+                display: flex;
+                gap: 1.5rem;
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: #9ca3af;
+            }
+
+            .profile-info .followers span strong {
+                color: white;
+                font-weight: 700;
+            }
+
+            button.edit-profile {
+                border: 1px solid #4b5563;
+                border-radius: 9999px;
+                padding: 0.25rem 1rem;
+                font-size: 0.875rem;
+                font-weight: 600;
+                background: none;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                height: fit-content;
+            }
+
+            button.edit-profile:hover {
+                background-color: #1f2937;
+            }
+
+            /* Tabs */
+            nav.tabs {
+                display: flex;
+                border-bottom: 1px solid #374151;
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: #6b7280;
+                margin-bottom: 1rem;
+            }
+
+            nav.tabs button {
+                background: none;
+                border: none;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                color: inherit;
+            }
+
+            nav.tabs button[aria-current="page"] {
+                color: #3b82f6;
+                border-bottom: 2px solid #3b82f6;
+                padding-bottom: 0.5rem;
+            }
+
+            nav.tabs button:disabled {
+                color: #374151;
+                cursor: default;
+            }
+
+            nav.tabs button:hover:not(:disabled) {
+                color: white;
+            }
+
+            /* Pinned post */
+            article.pinned-post {
+                background-color: #000000;
+                border: 1px solid #374151;
+                border-radius: 0.75rem;
+                padding: 1rem;
+                max-width: 48rem;
+            }
+
+            article.pinned-post .profile-header {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+                font-size: 0.75rem;
+                color: #9ca3af;
+            }
+
+            article.pinned-post .profile-header i {
+                font-size: 0.75rem;
+            }
+
+            article.pinned-post .post-header {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+                font-size: 0.875rem;
+                color: #9ca3af;
+            }
+
+            article.pinned-post .post-header strong {
+                color: white;
+                font-size: 0.875rem;
+            }
+
+            article.pinned-post .post-header button.promote {
+                margin-left: auto;
+                border: 1px solid #4b5563;
+                border-radius: 9999px;
+                padding: 0.125rem 0.75rem;
+                font-size: 0.75rem;
+                font-weight: 600;
+                background: none;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+            }
+
+            article.pinned-post .post-header button.promote:hover {
+                background-color: #1f2937;
+            }
+
+            article.pinned-post .post-header button.icon-btn {
+                background: none;
+                border: none;
+                color: #9ca3af;
+                cursor: pointer;
+                font-size: 1rem;
+                padding: 0;
+                margin-left: 0.25rem;
+                transition: color 0.2s ease;
+            }
+
+            article.pinned-post .post-header button.icon-btn:hover {
+                color: white;
+            }
+
+            article.pinned-post p.post-text {
+                color: #d1d5db;
+                font-size: 0.875rem;
+                margin-bottom: 0.75rem;
+            }
+
+            article.pinned-post p.post-text a {
+                color: #2563eb;
+            }
+
+            article.pinned-post img.post-image {
+                border-radius: 0.75rem;
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="user-detail">
+        <section class="left-section">
+            <header class="profile-header">
+                <button aria-label="Back" type="button">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div>
+                    <h1>Mintesnot yesmashwa</h1>
+                    <p>19 posts</p>
+                </div>
+            </header>
+            <div class="banner-container">
+                <img alt="Abstract blurred colorful background with warm tones" class="banner"
+                    src="https://storage.googleapis.com/a1aa/image/c3e99e17-a087-475b-8ef1-c19524f59761.jpg" width="900"
+                    height="200" />
+                <div class="profile-pic-wrapper">
+                    <img alt="Profile picture of a young man with short curly hair wearing a black hoodie and gray t-shirt standing outdoors near a bridge"
+                        src="https://storage.googleapis.com/a1aa/image/17597bfa-beec-42ff-0e29-1428c3d81f8f.jpg"
+                        width="128" height="128" />
+                </div>
+            </div>
+            <div class="profile-info-edit">
+                <div class="profile-info">
+                    <h2>Mintesnot <span class="extra-bold">yesmashwa</span></h2>
+                    <p class="handle">@Minte_yess</p>
+                    <p class="description">Mobile Developer | Expert in React Native &amp; Flutter | Building
+                        cross-platform apps with sleek UI &amp; top performance | Passionate about seamless UX &amp;
+                        clean code |</p>
+                    <div class="details">
+                        <div><i class="fas fa-briefcase"></i> Mobile Application</div>
+                        <div><i class="fas fa-map-marker-alt"></i> Addis Ababa</div>
+                        <div><i class="fas fa-link"></i> <a href="https://github.com/mintesnot-yess" target="_blank"
+                                rel="noopener noreferrer">github.com/mintesnot-yess…</a></div>
+                    </div>
+                    <p class="joined">Joined September 2024</p>
+                    <div class="followers">
+                        <span><strong>1</strong> Following</span>
+                        <span><strong>6</strong> Followers</span>
+                    </div>
+                </div>
+                <button class="edit-profile" type="button">Edit profile</button>
+            </div>
+            <nav class="tabs" role="tablist" aria-label="Profile navigation">
+                <button aria-current="page" type="button">Posts</button>
+                <button type="button">Replies</button>
+            </nav>
+
+
+
+            <article class="pinned-post" aria-label="Pinned post by Mintesnot yesmashwa">
+
+                <div class="post-header">
+                    <img alt="Profile picture of Mintesnot yesmashwa"
+                        src="https://storage.googleapis.com/a1aa/image/2b4ea3fe-db14-4508-cad3-2f0a349f5bad.jpg"
+                        width="32" height="32" style="border-radius: 9999px; object-fit: cover;" />
+                    <strong>Mintesnot yesmashwa</strong>
+                    <span>@Minte_yess · May 6</span>
+                    <button class="promote" type="button">Promote</button>
+                    <button aria-label="Mute notifications" class="icon-btn" type="button"><i
+                            class="fas fa-bell-slash"></i></button>
+                    <button aria-label="More options" class="icon-btn" type="button"><i
+                            class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <p class="post-text">Figma UI Design <a href="#">#Figma</a></p>
+                <img alt="Screenshot of Figma UI Design showing Cristiano Ronaldo app interface with red and black theme"
+                    class="post-image"
+                    src="https://storage.googleapis.com/a1aa/image/1fd86349-ebe2-481e-80b4-01b9c64c9238.jpg" width="600"
+                    height="400" />
+            </article>
+        </section>
+    </div>
+</body>
+
+</html>

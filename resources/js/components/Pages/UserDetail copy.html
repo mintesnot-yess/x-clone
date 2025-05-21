@@ -1,0 +1,336 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>News Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+        body {
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .explore {
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 12px 16px;
+            min-height: 100vh;
+
+
+            /* Search and settings */
+            .search-settings {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 8px;
+            }
+
+            .search-box {
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                background: #000;
+                border: 1px solid #374151;
+                border-radius: 9999px;
+                padding: 8px 12px;
+            }
+
+            .search-box i {
+                color: #9ca3af;
+                font-size: 14px;
+            }
+
+            .search-box input {
+                background: transparent;
+                border: none;
+                outline: none;
+                color: #fff;
+                font-size: 14px;
+                margin-left: 8px;
+                width: 100%;
+            }
+
+            .settings-btn {
+                background: none;
+                border: none;
+                color: #9ca3af;
+                font-size: 18px;
+                cursor: pointer;
+            }
+
+            .settings-btn:hover {
+                color: #fff;
+            }
+
+            /* Navigation tabs */
+            nav {
+                display: flex;
+                gap: 24px;
+                border-bottom: 1px solid #374151;
+                margin-bottom: 12px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            nav button {
+                background: none;
+                border: none;
+                color: #6b7280;
+                padding-bottom: 4px;
+                cursor: pointer;
+            }
+
+            nav button.active {
+                color: #3b82f6;
+                border-bottom: 2px solid #3b82f6;
+                font-weight: 600;
+            }
+
+            nav button:hover:not(.active) {
+                color: #d1d5db;
+            }
+
+            /* Headings */
+            h2,
+            h3 {
+                margin: 0 0 12px 0;
+            }
+
+            h2 {
+                font-weight: 700;
+                font-size: 18px;
+            }
+
+            h3 {
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            /* News items */
+            .news-item {
+                margin-bottom: 16px;
+            }
+
+            .news-meta {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 10px;
+                color: #6b7280;
+            }
+
+            .avatars {
+                display: flex;
+                margin-right: 4px;
+            }
+
+            .avatars img {
+                width: 20px;
+                height: 20px;
+                border-radius: 9999px;
+                border: 1px solid #000;
+                margin-left: -6px;
+            }
+
+            /* Divider */
+            hr {
+                border: none;
+                border-top: 1px solid #1f2937;
+                margin: 16px 0;
+            }
+
+            /* Trending list */
+            .trending-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 16px;
+            }
+
+            .trending-info {
+                font-size: 12px;
+            }
+
+            .trending-info .category {
+                color: #6b7280;
+                margin-bottom: 2px;
+            }
+
+            .trending-info .title {
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 2px;
+            }
+
+            .trending-info .posts {
+                color: #9ca3af;
+            }
+
+            .more-btn {
+                background: none;
+                border: none;
+                color: #6b7280;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            .more-btn:hover {
+                color: #d1d5db;
+            }
+
+            /* Who to follow */
+            .who-to-follow {
+                font-weight: 700;
+                font-size: 18px;
+                margin-top: 24px;
+                margin-bottom: 12px;
+            }
+
+            .follow-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .follow-item img {
+                width: 40px;
+                height: 40px;
+                border-radius: 9999px;
+            }
+
+            .follow-info {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            .follow-info .verified {
+                color: #3b82f6;
+                font-size: 12px;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="explore">
+        <div class="search-settings">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search" />
+            </div>
+            <button class="settings-btn" aria-label="Settings">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+        <nav>
+            <button class="active">For You</button>
+            <button>Trending</button>
+            <button>News</button>
+            <button>Sports</button>
+            <button>Entertainment</button>
+        </nav>
+        <h2>Today's News</h2>
+        <article class="news-item">
+            <h3>Rep. Gerry Connolly Dies at 75; Leaves Legacy of Service</h3>
+            <div class="news-meta">
+                <div class="avatars">
+                    <img src="https://storage.googleapis.com/a1aa/image/285f43cd-8a3c-4669-4f06-17de73870da9.jpg"
+                        alt="Profile image of person 1 with blue shirt and glasses" />
+                    <img src="https://storage.googleapis.com/a1aa/image/d5ee7c45-bea6-40c0-eb67-8f355dc54953.jpg"
+                        alt="Profile image of person 2 with short hair and beard" />
+                    <img src="https://storage.googleapis.com/a1aa/image/526760e5-77c5-49e9-148c-c0a1057394be.jpg"
+                        alt="Profile image of person 3 with dark hair and glasses" />
+                </div>
+                <span>Trending now · News · 6K posts</span>
+            </div>
+        </article>
+        <article class="news-item">
+            <h3>Elon Musk's Optimus: The Future of Household Robotics?</h3>
+            <div class="news-meta">
+                <img src="https://storage.googleapis.com/a1aa/image/07c861dd-335f-4a63-fe6c-61996066348c.jpg"
+                    alt="Profile image of Elon Musk with beard and brown hair"
+                    style="width:20px; height:20px; border-radius:9999px; border:1px solid #000; margin-right:8px;" />
+                <span>9 hours ago · News · 55K posts</span>
+            </div>
+        </article>
+        <article class="news-item">
+            <h3>Former Ukrainian Official Assassinated in Madrid</h3>
+            <div class="news-meta">
+                <img src="https://storage.googleapis.com/a1aa/image/8007b436-52e2-4ca1-69c2-95efa0b0df95.jpg"
+                    alt="Profile image of Ukrainian official with dark hair"
+                    style="width:20px; height:20px; border-radius:9999px; border:1px solid #000; margin-right:8px;" />
+                <span>4 hours ago · News · 15K posts</span>
+            </div>
+        </article>
+        <hr />
+        <section>
+            <div class="trending-item">
+                <div class="trending-info">
+                    <p class="category">Trending in Gaming</p>
+                    <p class="title">Senua's Saga</p>
+                    <p class="posts">1,477 posts</p>
+                </div>
+                <button class="more-btn" aria-label="More options"><i class="fas fa-ellipsis-h"></i></button>
+            </div>
+            <div class="trending-item">
+                <div class="trending-info">
+                    <p class="category">Trending in Gaming</p>
+                    <p class="title">Hellblade II</p>
+                    <p class="posts">1,405 posts</p>
+                </div>
+                <button class="more-btn" aria-label="More options"><i class="fas fa-ellipsis-h"></i></button>
+            </div>
+            <div class="trending-item">
+                <div class="trending-info">
+                    <p class="category">Trending in Ethiopia</p>
+                    <p class="title">#AddisAbaba</p>
+                </div>
+                <button class="more-btn" aria-label="More options"><i class="fas fa-ellipsis-h"></i></button>
+            </div>
+            <div class="trending-item">
+                <div class="trending-info">
+                    <p class="category">Trending in Ethiopia</p>
+                    <p class="title">#Eritrea</p>
+                    <p class="posts">5,466 posts</p>
+                </div>
+                <button class="more-btn" aria-label="More options"><i class="fas fa-ellipsis-h"></i></button>
+            </div>
+            <div class="trending-item">
+                <div class="trending-info">
+                    <p class="category">Trending in Stocks &amp; indices</p>
+                    <p class="title">Strong Buy</p>
+                    <p class="posts">2,543 posts</p>
+                </div>
+                <button class="more-btn" aria-label="More options"><i class="fas fa-ellipsis-h"></i></button>
+            </div>
+            <div class="trending-item">
+                <div class="trending-info">
+                    <p class="category">Trending in Ethiopia</p>
+                    <p class="title">#EthioMedProtest</p>
+                </div>
+                <button class="more-btn" aria-label="More options"><i class="fas fa-ellipsis-h"></i></button>
+            </div>
+        </section>
+        <h3 class="who-to-follow">Who to follow</h3>
+        <div class="follow-item">
+            <img src="https://storage.googleapis.com/a1aa/image/1a0b1a35-6fcc-473f-4c81-388178d44ea3.jpg"
+                alt="Profile image of coder girl with short hair and orange emoji" />
+            <div class="follow-info">
+                <span>coder_girl</span>
+                <span>👩‍💻</span>
+                <i class="fas fa-check-circle verified"></i>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+
+</html>
