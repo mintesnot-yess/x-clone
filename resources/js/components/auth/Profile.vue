@@ -47,6 +47,7 @@
                     <p class="joined">Joined {{ new Date(user.created_at).toLocaleDateString() }}</p>
                 </div>
                 <button class="edit-profile" type="button">Edit profile</button>
+                <button @click="logout" class="edit-profile" type="button">Log Out</button>
             </div>
 
             <!-- Navigation Tabs -->
@@ -67,7 +68,7 @@
                             height="32" style="border-radius: 9999px; object-fit: cover;" />
                         <strong>{{ user.name }}</strong>
                         <span>@{{ user.name }} · @{{ user.name }} · {{ new Date(post.created_at).toLocaleDateString()
-                            }}</span>
+                        }}</span>
                         <button class="promote" type="button">Edit</button>
                         <button @click="deletePost(post.id)" aria-label="Mute notifications" class="icon-btn"
                             type="button"><i class="fas fa-trash"></i></button>
@@ -89,7 +90,7 @@
 
 
 
-            <div v-else>No posts yet.</div>
+            <div class="post-yet" v-else>No posts yet</div>
         </section>
     </div>
 </template>
@@ -142,6 +143,23 @@ const deletePost = async (id) => {
         alert('Failed to delete post.')
     }
 }
+const logout = async () => {
+    try {
+        await axios.post('api/logout', {}, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        window.location.href = '/';
+    } catch (err) {
+        console.error('Logout failed:', err);
+        alert('Logout failed.');
+    }
+};
 
 onMounted(fetchUserAndPosts)
 
@@ -153,5 +171,11 @@ onMounted(fetchUserAndPosts)
     font-size: 1.3rem;
     color: #fff;
     transition: color 0.2s;
+}
+
+.post-yet {
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
 }
 </style>

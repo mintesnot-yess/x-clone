@@ -53,4 +53,8 @@ Route::get('/posts', [PostController::class, 'Index']);
 Route::middleware('auth:sanctum')->get('/user-posts', [PostController::class, 'userPosts']);
 Route::middleware('auth:sanctum')->delete('/posts/{id}', [PostController::class, 'destroy']);
 
+Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
+    $request->user()->currentAccessToken()->delete();
+    return response()->json(['message' => 'Logged out']);
+});
 

@@ -608,7 +608,7 @@ main .user_posts .post_contents li {
     button.edit-profile {
         border: 1px solid #4b5563;
         border-radius: 9999px;
-        padding: 0.25rem 1rem;
+        padding: 0.25rem 20px;
         font-size: 0.875rem;
         font-weight: 600;
         background: none;
