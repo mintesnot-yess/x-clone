@@ -14,7 +14,12 @@
 }
 
 a {
+
+
     text-decoration: none;
+    color: var(--textcolor);
+
+
 }
 
 body {
@@ -689,6 +694,12 @@ main .user_posts .post_contents li {
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
     color: #9ca3af;
+
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .pinned-post .post-header strong {

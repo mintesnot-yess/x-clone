@@ -1,4 +1,5 @@
 <template>
+
     <div class="user-detail">
         <!-- LOADING STATE -->
         <div v-if="loading">Loading...</div>
@@ -82,14 +83,6 @@
                 </article>
             </div>
 
-
-
-
-
-
-
-
-
             <div class="post-yet" v-else>No posts yet</div>
         </section>
     </div>
@@ -114,6 +107,7 @@ const fetchUserAndPosts = async () => {
             }
         })
         user.value = userRes.data
+        document.title = "Profile | " + user.value.name
 
         const postsRes = await axios.get('api/user-posts', {
             headers: {
@@ -160,6 +154,8 @@ const logout = async () => {
         alert('Logout failed.');
     }
 };
+
+
 
 onMounted(fetchUserAndPosts)
 

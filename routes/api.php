@@ -52,9 +52,19 @@ Route::post('/posts', [PostController::class, 'Store']);
 Route::get('/posts', [PostController::class, 'Index']);
 Route::middleware('auth:sanctum')->get('/user-posts', [PostController::class, 'userPosts']);
 Route::middleware('auth:sanctum')->delete('/posts/{id}', [PostController::class, 'destroy']);
+Route::middleware('auth:sanctum')->put('/user/update', [AuthController::class, 'update']);
 
 Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
     $request->user()->currentAccessToken()->delete();
     return response()->json(['message' => 'Logged out']);
 });
 
+
+Route::get('/users/{email}', function ($email) {
+    $user = User::where('email', $email)->withCount('posts')->with('posts')->first();
+    if (!$user) {
+        return response()->json(['message' => 'User not found'], 404);
+    }
+
+    return response()->json($user);
+});

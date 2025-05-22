@@ -41,8 +41,9 @@
             <div class="post-header">
                 <img :alt="'Profile picture of ' + post.user.name" :src="'img/' + post.user.profile_image" width="32"
                     height="32" style="border-radius: 9999px; object-fit: cover;" />
-                <strong>{{ post.user.name }}</strong>
-                <span>@{{ post.user.name }} · @{{ post.user.email }} · {{ new Date(post.created_at).toLocaleDateString()
+                <router-link :to="`/profile/${post.user.email}`">{{ post.user.name }}</router-link>
+                <span>@{{ post.user.name }} · @{{ post.user.email }} · {{ new
+                    Date(post.created_at).toLocaleDateString()
                     }}</span>
                 <button class="promote" type="button"> </button>
                 <button aria-label="Mute notifications" class="icon-btn" type="button"><i
@@ -65,6 +66,7 @@
 
 <script>
 import axios from 'axios';
+import router from '../../router';
 
 export default {
 
