@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PostController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -67,4 +68,11 @@ Route::get('/users/{email}', function ($email) {
     }
 
     return response()->json($user);
+});
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/follow/{id}', [FollowController::class, 'toggleFollow']);
+    Route::get('/user/{id}/followers', [FollowController::class, 'followers']);
+    Route::get('/user/{id}/followings', [FollowController::class, 'followings']);
 });

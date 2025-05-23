@@ -1,24 +1,5 @@
 <template>
-    <!-- <div v-if="!loading && user">
-        <h2>{{ user.name }}</h2>
-        <p>{{ user.email }}</p>
-        <p>{{ user.posts_count }} posts</p>
 
-        <div v-for="post in user.posts" :key="post.id" class="post">
-            <p>{{ post.content }}</p>
-            <img v-if="post.image" :src="`storage/${post.image}`" width="300" />
-        </div>
-    </div>
-
-    <div v-else-if="loading">Loading...</div>
-    <div v-else-if="error">Error: {{ error.message }}</div>
-
- -->
-
-
-
-
-    <!--  -->
 
 
     <div class="user-detail">
@@ -79,11 +60,7 @@
                 aria-label="Pinned post by Mintesnot yesmashwa">
 
                 <div class="post-header">
-                    <img :alt="'Profile picture of ' + user.name" :src="'img/' + user.profile_image" width="32"
-                        height="32" style="border-radius: 9999px; object-fit: cover;" />
-                    <strong>{{ user.name }}</strong>
-                    <span>@{{ user.name }} · @{{ user.name }} · {{ new Date(post.created_at).toLocaleDateString()
-                    }}</span>
+
                     <button class="promote" type="button"></button>
                     <button @click="deletePost(post.id)" aria-label="Mute notifications" class="icon-btn"
                         type="button"><i class="fas fa-bell-slash"></i></button>
@@ -95,13 +72,6 @@
                 <img v-if="post.image" class="post-image" :alt="'Post image'" :src="`/storage/${post.image}`"
                     width="600" height="400" />
             </article>
-
-
-
-
-
-
-
 
 
             <!-- <div class="post-yet" v-else>No posts yet</div> -->

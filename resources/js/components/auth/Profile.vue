@@ -65,11 +65,7 @@
                     aria-label="Pinned post by Mintesnot yesmashwa">
 
                     <div class="post-header">
-                        <img :alt="'Profile picture of ' + user.name" :src="'img/' + user.profile_image" width="32"
-                            height="32" style="border-radius: 9999px; object-fit: cover;" />
-                        <strong>{{ user.name }}</strong>
-                        <span>@{{ user.name }} · @{{ user.name }} · {{ new Date(post.created_at).toLocaleDateString()
-                        }}</span>
+
                         <button class="promote" type="button">Edit</button>
                         <button @click="deletePost(post.id)" aria-label="Mute notifications" class="icon-btn"
                             type="button"><i class="fas fa-trash"></i></button>

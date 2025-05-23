@@ -670,6 +670,7 @@ main .user_posts .post_contents li {
     border-radius: 0.75rem;
     padding: 1rem;
     margin: 20px auto;
+    position: relative;
 
 
 }
@@ -689,17 +690,14 @@ main .user_posts .post_contents li {
 
 .pinned-post .post-header {
     display: flex;
-    align-items: center;
+    align-items: end;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
     color: #9ca3af;
 
-    a {
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+
+
 }
 
 .pinned-post .post-header strong {
@@ -735,19 +733,26 @@ main .user_posts .post_contents li {
     transition: color 0.2s ease;
 }
 
+
+
 .pinned-post .post-header button.icon-btn:hover {
     color: white;
 }
 
 .pinned-post p.post-text {
-    color: #d1d5db;
+    color: #c0c0c0;
     font-size: 0.875rem;
     margin-bottom: 0.75rem;
+    font-weight: 300;
+    text-wrap: wrap;
+    width: 100%;
 }
 
 .pinned-post p.post-text a {
     color: #2563eb;
 }
+
+
 
 .pinned-post img.post-image {
     border-radius: 0.75rem;
@@ -755,6 +760,8 @@ main .user_posts .post_contents li {
     height: auto;
     display: block;
 }
+
+
 
 
 

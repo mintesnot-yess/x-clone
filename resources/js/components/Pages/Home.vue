@@ -35,21 +35,32 @@
 
 
     <div v-if="posts.length">
-        <article v-for="post in posts" :key="post.id" class="pinned-post"
-            aria-label="Pinned post by Mintesnot yesmashwa">
+        <article v-for="post in posts" :key="post.id" class="pinned-post" aria-label=" ">
 
             <div class="post-header">
-                <img :alt="'Profile picture of ' + post.user.name" :src="'img/' + post.user.profile_image" width="32"
-                    height="32" style="border-radius: 9999px; object-fit: cover;" />
-                <router-link :to="`/profile/${post.user.email}`">{{ post.user.name }}</router-link>
-                <span>@{{ post.user.name }} · @{{ post.user.email }} · {{ new
+                <img :alt="'Profile picture of ' + post.user.name" :src="'img/' + post.user.profile_image" width="35"
+                    height="35" style="border-radius: 999px; object-fit: cover;" />
+
+                <router-link class="d-f" :title='`${post.user.name} ${post.user.email}`'
+                    :to="`/profile/${post.user.email}`">
+                    <span> {{ post.user.name }}</span>
+                    <span>{{ post.user.email }} </span>
+
+                </router-link>
+
+                <span>{{ new
                     Date(post.created_at).toLocaleDateString()
-                    }}</span>
-                <button class="promote" type="button"> </button>
+                }}</span>
+                <button class="promote" type="button" @click="toggleFollow(post.user.id)">
+                    {{ isFollowing ? 'Unfollow' : 'Follow' }}
+                </button>
+
+
                 <button aria-label="Mute notifications" class="icon-btn" type="button"><i
                         class="fas fa-bell-slash"></i></button>
                 <button aria-label="More options" class="icon-btn" type="button"><i
                         class="fas fa-ellipsis-h"></i></button>
+
 
             </div>
             <p class="post-text">{{ post.content }} </p>
@@ -68,6 +79,10 @@
 import axios from 'axios';
 import router from '../../router';
 
+
+
+
+
 export default {
 
 
@@ -83,11 +98,17 @@ export default {
     },
     mounted() {
         this.fetchPosts();
+
+
     },
+
+
     methods: {
+
         handleFile(e) {
             this.form.image = e.target.files[0];
         },
+
         async submitPost() {
             const user = JSON.parse(localStorage.getItem('user') || '{}');
             const userId = user.id || '';
@@ -131,8 +152,49 @@ export default {
         showMore(post) {
             console.log(post.content)
         },
+
+        toggleFollow: async function (userId) {
+            try {
+
+                const token = localStorage.getItem('token');
+
+                const res = await axios.post(`api/follow/${userId}`, {}, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                alert(res.data.message);
+
+                this.fetchPosts();
+
+            } catch (error) {
+                console.error('Follow/Unfollow failed:', error);
+                alert('Failed to follow/unfollow.');
+            }
+        }
+
+
+
     },
 
 
 };
 </script>
+
+
+<style>
+.d-f {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0 5px;
+
+    span:nth-child(1) {
+        font-size: 1.3rem;
+        padding: 0;
+        text-transform: capitalize;
+    }
+
+}
+</style>
